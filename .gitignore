@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+build/
+release_staging/
+Release/
+*.spec
+*.db
+.venv/
+SevenDeadlySinsOriginGuide_Portable.zip
+SevenDeadlySinsOriginGuide_Portable.zip.sha256
+ui-qa.png
+qa_*/
+
