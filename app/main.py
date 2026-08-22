@@ -1,7 +1,7 @@
 import sys
 from pathlib import Path
-from PySide6.QtCore import Qt, QUrl
-from PySide6.QtGui import QColor, QDesktopServices, QFont, QPixmap
+from PySide6.QtCore import Qt, QUrl, QSize
+from PySide6.QtGui import QColor, QDesktopServices, QFont, QPixmap, QIcon
 from PySide6.QtWidgets import (QApplication,QMainWindow,QWidget,QVBoxLayout,QHBoxLayout,QLabel,QPushButton,QLineEdit,QListWidget,QListWidgetItem,QStackedWidget,QFrame,QComboBox,QSpinBox,QFormLayout,QMessageBox,QDialog,QDialogButtonBox,QSplitter,QFileDialog,QTextEdit)
 from app.config import APP_NAME,APP_VERSION,DATA_VERSION,SOURCES
 from app import database as db
@@ -79,7 +79,13 @@ class MainWindow(QMainWindow):
         q=self.char_filter.text().lower() if hasattr(self,'char_filter') else '' ;self.char_list.clear()
         for r in db.characters():
             if q and q not in r['name_ko'].lower() and q not in r['name_en'].lower():continue
-            it=QListWidgetItem(f"[{r['rarity']}]  {r['name_ko']}  ·  {r['element']} · {r['role']}");it.setData(Qt.UserRole,r['id']);self.char_list.addItem(it)
+            it=QListWidgetItem(f"[{r['rarity']}]  {r['name_ko']}\n{r['name_en']}  ·  {r['element']}  ·  {r['role']}");it.setData(Qt.UserRole,r['id']);it.setSizeHint(QSize(0,68))
+            try:
+                detail=db.character_details(r['id']);path=cached_image(detail.get('portrait_url','')) if detail else None
+                if path:it.setIcon(QIcon(str(path)))
+            except Exception:pass
+            self.char_list.addItem(it)
+        self.char_list.setIconSize(QSize(52,52))
         if self.char_list.count():self.char_list.setCurrentRow(0)
     def show_character(self,current,_):
         if not current:return
@@ -88,10 +94,23 @@ class MainWindow(QMainWindow):
             while old.count():
                 item=old.takeAt(0); item.widget() and item.widget().deleteLater()
             old.deleteLater()
-        l=QVBoxLayout(self.char_detail);l.setContentsMargins(28,24,28,24);l.addWidget(label(r['name_ko'],'title'));l.addWidget(label(f"{r['name_en']} · {r['rarity']} · {r['element']} · {r['role']}",'subtitle'))
-        l.addWidget(label('무기/역할','section'));l.addWidget(label(f"주 무기 타입: {r['weapon_type']}\n가능 역할: {r['roles']}"))
-        l.addWidget(label('공략 메모','section'));l.addWidget(label(r['guide']))
+        detail=db.character_details(r['id']);l=QVBoxLayout(self.char_detail);l.setContentsMargins(28,24,28,24)
+        hero=QHBoxLayout();portrait=QLabel();portrait.setFixedSize(190,190);portrait.setAlignment(Qt.AlignCenter)
+        try:
+            path=cached_image(detail.get('portrait_url',''));pix=QPixmap(str(path)) if path else QPixmap()
+            if not pix.isNull():portrait.setPixmap(pix.scaled(180,180,Qt.KeepAspectRatio,Qt.SmoothTransformation))
+            else:portrait.setText('이미지 없음')
+        except Exception:portrait.setText('이미지 로드 실패')
+        identity=QVBoxLayout();identity.addWidget(label(r['name_ko'],'title'));identity.addWidget(label(f"{r['name_en']} · {r['rarity']}",'subtitle'));identity.addWidget(label(f"속성  {r['element']}    기본 역할  {r['role']}",'badge'));identity.addWidget(label(detail.get('description_ko') or detail.get('description_en') or r['guide']));identity.addStretch();hero.addWidget(portrait);hero.addLayout(identity,1);l.addLayout(hero)
+        l.addWidget(label('무기별 속성 · 역할','section'));variants=detail.get('variants',[])
+        variant_row=QHBoxLayout()
+        for v in variants:
+            box=card();bl=QVBoxLayout(box);bl.addWidget(label(v['weapon'],'section'));bl.addWidget(label(v['weapon_en'],'subtitle'));bl.addWidget(label(f"{v['element']} 속성\n{v['role']} 역할",'badge'));variant_row.addWidget(box)
+        if variants:l.addLayout(variant_row)
+        else:l.addWidget(label(f"대표 무기: {r['weapon_type']} · 가능한 역할: {r['roles']}"))
+        l.addWidget(label('운용 가이드','section'));l.addWidget(label(r['guide']))
         l.addWidget(label('데이터 신뢰도','section'));l.addWidget(label('● 커뮤니티 DB 검증 · 출처 URL이 데이터에 기록되어 있습니다. 수치·스킬은 업데이트 탭에서 최신 공개 DB와 대조하세요.','badge'))
+        source=QPushButton('캐릭터 전체 스킬·마스터리 원문 열기');source.clicked.connect(lambda:QDesktopServices.openUrl(QUrl(detail.get('source_url',r['source_url']))));l.addWidget(source)
         b=QPushButton('선택 계정에 보유 캐릭터로 추가');b.clicked.connect(lambda: self.add_current_character(r['id']));l.addWidget(b);l.addStretch()
     def add_current_character(self,cid):
         if not self.current_account: QMessageBox.information(self,'계정 선택 필요','먼저 내 계정 탭에서 계정을 등록하고 선택해 주세요.');return
@@ -214,4 +233,3 @@ class MainWindow(QMainWindow):
 def main():
     db.initialize();app=QApplication(sys.argv);app.setApplicationName(APP_NAME);app.setStyleSheet(STYLE);font=QFont('Malgun Gothic',10);app.setFont(font);win=MainWindow();win.center_on_screen();win.show();return app.exec()
 if __name__=='__main__':raise SystemExit(main())
-

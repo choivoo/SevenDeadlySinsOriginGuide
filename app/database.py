@@ -107,6 +107,14 @@ def characters():
     with connect() as c: return c.execute('SELECT * FROM characters ORDER BY CASE rarity WHEN "SSR" THEN 0 ELSE 1 END, name_ko').fetchall()
 def character(cid):
     with connect() as c: return c.execute('SELECT * FROM characters WHERE id=?',(cid,)).fetchone()
+def character_details(cid):
+    row=character(cid)
+    path=BASE_DIR/'data'/'character_details.json'
+    if not row or not path.exists():return {}
+    payload=json.loads(path.read_text(encoding='utf-8')).get('characters',{})
+    for detail in payload.values():
+        if detail.get('name_en','').lower()==row['name_en'].lower():return detail
+    return {}
 def catalog_entry(entity_id):
     with connect() as c:return c.execute('SELECT * FROM catalog WHERE id=?',(entity_id,)).fetchone()
 def map_search(query='',marker_type='all',limit=500):
@@ -131,4 +139,3 @@ def set_owned(aid,cid,level=1,weapon='',breakthrough=0,mastery=0,combat_power=0,
     with connect() as c: c.execute('INSERT INTO owned_characters(account_id,character_id,level,weapon_name,breakthrough,mastery,combat_power,equipment_note) VALUES(?,?,?,?,?,?,?,?) ON CONFLICT(account_id,character_id) DO UPDATE SET level=excluded.level,weapon_name=excluded.weapon_name,breakthrough=excluded.breakthrough,mastery=excluded.mastery,combat_power=excluded.combat_power,equipment_note=excluded.equipment_note',(aid,cid,level,weapon,breakthrough,mastery,combat_power,equipment_note)); c.commit()
 def remove_owned(aid,cid):
     with connect() as c: c.execute('DELETE FROM owned_characters WHERE account_id=? AND character_id=?',(aid,cid));c.commit()
-
