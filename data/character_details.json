@@ -1,0 +1,880 @@
+{
+  "generated_at": "2026-08-22T22:58:18.749193+00:00",
+  "characters": {
+    "gowther": {
+      "name_ko": "고서",
+      "name_en": "Gowther",
+      "description_ko": "고서 — Seven Deadly Sins: Origin의 공격형 번개 (완드) 캐릭터. 스탯, 스킬, 마스터리, 코스튬, 빌드 및 시너지.",
+      "description_en": "Gowther — Attacker Thunder (Wand) character in Seven Deadly Sins: Origin. Stats, skills, mastery, costumes, builds and synergies.",
+      "portrait_url": "https://7dsorigin.app/images/characters/gowther.webp",
+      "banner_url": "https://7dsorigin.app/images/characters/banners/gowther.webp",
+      "source_url": "https://7dsorigin.app/en/characters/gowther",
+      "variants": [
+        {
+          "weapon": "완드",
+          "weapon_en": "Wand",
+          "role": "Burster",
+          "role_en": "Burster",
+          "element": "Thunder",
+          "element_en": "Thunder"
+        },
+        {
+          "weapon": "마도서",
+          "weapon_en": "Book",
+          "role": "지원",
+          "role_en": "Supporter",
+          "element": "물리",
+          "element_en": "Physical"
+        },
+        {
+          "weapon": "스태프",
+          "weapon_en": "Staff",
+          "role": "지원",
+          "role_en": "Supporter",
+          "element": "Thunder",
+          "element_en": "Thunder"
+        }
+      ]
+    },
+    "griamore": {
+      "name_ko": "그리아모어",
+      "name_en": "Griamore",
+      "description_ko": "그리아모어 — Seven Deadly Sins: Origin의 방어형 물리 (방패) 캐릭터. 스탯, 스킬, 마스터리, 코스튬, 빌드 및 시너지.",
+      "description_en": "Griamore — Defender Physical (Shield) character in Seven Deadly Sins: Origin. Stats, skills, mastery, costumes, builds and synergies.",
+      "portrait_url": "https://7dsorigin.app/images/characters/griamore.webp",
+      "banner_url": "https://7dsorigin.app/images/characters/banners/griamore.webp",
+      "source_url": "https://7dsorigin.app/en/characters/griamore",
+      "variants": [
+        {
+          "weapon": "방패",
+          "weapon_en": "Shield",
+          "role": "Warden",
+          "role_en": "Warden",
+          "element": "물리",
+          "element_en": "Physical"
+        },
+        {
+          "weapon": "Nunchaku",
+          "weapon_en": "Nunchaku",
+          "role": "공격",
+          "role_en": "Attacker",
+          "element": "물리",
+          "element_en": "Physical"
+        },
+        {
+          "weapon": "건틀릿",
+          "weapon_en": "Gauntlets",
+          "role": "지원",
+          "role_en": "Supporter",
+          "element": "물리",
+          "element_en": "Physical"
+        }
+      ]
+    },
+    "guila": {
+      "name_ko": "길라",
+      "name_en": "Guila",
+      "description_ko": "길라 — Seven Deadly Sins: Origin의 공격형 화염 (랜스) 캐릭터. 스탯, 스킬, 마스터리, 코스튬, 빌드 및 시너지.",
+      "description_en": "Guila — Attacker Fire (Lance) character in Seven Deadly Sins: Origin. Stats, skills, mastery, costumes, builds and synergies.",
+      "portrait_url": "https://7dsorigin.app/images/characters/guila.webp",
+      "banner_url": "https://7dsorigin.app/images/characters/banners/guila.webp",
+      "source_url": "https://7dsorigin.app/en/characters/guila",
+      "variants": [
+        {
+          "weapon": "랜스",
+          "weapon_en": "Lance",
+          "role": "공격",
+          "role_en": "Attacker",
+          "element": "불",
+          "element_en": "Fire"
+        },
+        {
+          "weapon": "방패",
+          "weapon_en": "Shield",
+          "role": "Warden",
+          "role_en": "Warden",
+          "element": "불",
+          "element_en": "Fire"
+        },
+        {
+          "weapon": "레이피어",
+          "weapon_en": "Rapier",
+          "role": "Burster",
+          "role_en": "Burster",
+          "element": "불",
+          "element_en": "Fire"
+        }
+      ]
+    },
+    "gil-thunder": {
+      "name_ko": "길선더",
+      "name_en": "Gilthunder",
+      "description_ko": "길선더 — Seven Deadly Sins: Origin의 공격형 번개 (한손검) 캐릭터. 스탯, 스킬, 마스터리, 코스튬, 빌드 및 시너지.",
+      "description_en": "Gilthunder — Attacker Thunder (One-hand Sword) character in Seven Deadly Sins: Origin. Stats, skills, mastery, costumes, builds and synergies.",
+      "portrait_url": "https://7dsorigin.app/images/characters/gil-thunder.webp",
+      "banner_url": "https://7dsorigin.app/images/characters/banners/gil-thunder.webp",
+      "source_url": "https://7dsorigin.app/en/characters/gil-thunder",
+      "variants": [
+        {
+          "weapon": "One-hand Sword",
+          "weapon_en": "One-hand Sword",
+          "role": "Burster",
+          "role_en": "Burster",
+          "element": "Thunder",
+          "element_en": "Thunder"
+        },
+        {
+          "weapon": "방패",
+          "weapon_en": "Shield",
+          "role": "Warden",
+          "role_en": "Warden",
+          "element": "Thunder",
+          "element_en": "Thunder"
+        },
+        {
+          "weapon": "랜스",
+          "weapon_en": "Lance",
+          "role": "공격",
+          "role_en": "Attacker",
+          "element": "Thunder",
+          "element_en": "Thunder"
+        }
+      ]
+    },
+    "diane": {
+      "name_ko": "다이앤",
+      "name_en": "Diane",
+      "description_ko": "다이앤 — Seven Deadly Sins: Origin의 공격형 대지 (도끼) 캐릭터. 스탯, 스킬, 마스터리, 코스튬, 빌드 및 시너지.",
+      "description_en": "Diane — Attacker Earth (Axe) character in Seven Deadly Sins: Origin. Stats, skills, mastery, costumes, builds and synergies.",
+      "portrait_url": "https://7dsorigin.app/images/characters/diane.webp",
+      "banner_url": "https://7dsorigin.app/images/characters/banners/diane.webp",
+      "source_url": "https://7dsorigin.app/en/characters/diane",
+      "variants": [
+        {
+          "weapon": "도끼",
+          "weapon_en": "Axe",
+          "role": "공격",
+          "role_en": "Attacker",
+          "element": "대지",
+          "element_en": "Earth"
+        },
+        {
+          "weapon": "건틀릿",
+          "weapon_en": "Gauntlets",
+          "role": "Burster",
+          "role_en": "Burster",
+          "element": "대지",
+          "element_en": "Earth"
+        },
+        {
+          "weapon": "Nunchaku",
+          "weapon_en": "Nunchaku",
+          "role": "Warden",
+          "role_en": "Warden",
+          "element": "대지",
+          "element_en": "Earth"
+        }
+      ]
+    },
+    "derieri": {
+      "name_ko": "데리엘리",
+      "name_en": "Derieri",
+      "description_ko": "데리엘리 — Seven Deadly Sins: Origin의 공격형 암흑 (건틀렛) 캐릭터. 스탯, 스킬, 마스터리, 코스튬, 빌드 및 시너지.",
+      "description_en": "Derieri — Attacker Dark (Gauntlets) character in Seven Deadly Sins: Origin. Stats, skills, mastery, costumes, builds and synergies.",
+      "portrait_url": "https://7dsorigin.app/images/characters/derieri.webp",
+      "banner_url": "https://7dsorigin.app/images/characters/banners/derieri.webp",
+      "source_url": "https://7dsorigin.app/en/characters/derieri",
+      "variants": [
+        {
+          "weapon": "건틀릿",
+          "weapon_en": "Gauntlets",
+          "role": "공격",
+          "role_en": "Attacker",
+          "element": "어둠",
+          "element_en": "Dark"
+        },
+        {
+          "weapon": "양손검",
+          "weapon_en": "Two-hand Sword",
+          "role": "지원",
+          "role_en": "Supporter",
+          "element": "불",
+          "element_en": "Fire"
+        },
+        {
+          "weapon": "도끼",
+          "weapon_en": "Axe",
+          "role": "지원",
+          "role_en": "Supporter",
+          "element": "어둠",
+          "element_en": "Dark"
+        }
+      ]
+    },
+    "daisy": {
+      "name_ko": "데이지",
+      "name_en": "Daisy",
+      "description_ko": "데이지 — Seven Deadly Sins: Origin의 공격형 대지 (방패) 캐릭터. 스탯, 스킬, 마스터리, 코스튬, 빌드 및 시너지.",
+      "description_en": "Daisy — Attacker Earth (Shield) character in Seven Deadly Sins: Origin. Stats, skills, mastery, costumes, builds and synergies.",
+      "portrait_url": "https://7dsorigin.app/images/characters/daisy.webp",
+      "banner_url": "https://7dsorigin.app/images/characters/banners/daisy.webp",
+      "source_url": "https://7dsorigin.app/en/characters/daisy",
+      "variants": [
+        {
+          "weapon": "방패",
+          "weapon_en": "Shield",
+          "role": "공격",
+          "role_en": "Attacker",
+          "element": "대지",
+          "element_en": "Earth"
+        },
+        {
+          "weapon": "마도서",
+          "weapon_en": "Book",
+          "role": "지원",
+          "role_en": "Supporter",
+          "element": "Thunder",
+          "element_en": "Thunder"
+        },
+        {
+          "weapon": "완드",
+          "weapon_en": "Wand",
+          "role": "지원",
+          "role_en": "Supporter",
+          "element": "바람",
+          "element_en": "Wind"
+        }
+      ]
+    },
+    "dreydrin": {
+      "name_ko": "드레드린",
+      "name_en": "Dredrin",
+      "description_ko": "드레드린 — Seven Deadly Sins: Origin의 방어형 대지 (방패) 캐릭터. 스탯, 스킬, 마스터리, 코스튬, 빌드 및 시너지.",
+      "description_en": "Dredrin — Defender Earth (Shield) character in Seven Deadly Sins: Origin. Stats, skills, mastery, costumes, builds and synergies.",
+      "portrait_url": "https://7dsorigin.app/images/characters/dreydrin.webp",
+      "banner_url": "https://7dsorigin.app/images/characters/banners/dreydrin.webp",
+      "source_url": "https://7dsorigin.app/en/characters/dreydrin",
+      "variants": [
+        {
+          "weapon": "방패",
+          "weapon_en": "Shield",
+          "role": "Warden",
+          "role_en": "Warden",
+          "element": "대지",
+          "element_en": "Earth"
+        },
+        {
+          "weapon": "도끼",
+          "weapon_en": "Axe",
+          "role": "지원",
+          "role_en": "Supporter",
+          "element": "물리",
+          "element_en": "Physical"
+        },
+        {
+          "weapon": "레이피어",
+          "weapon_en": "Rapier",
+          "role": "지원",
+          "role_en": "Supporter",
+          "element": "Holy",
+          "element_en": "Holy"
+        }
+      ]
+    },
+    "drake": {
+      "name_ko": "드레이크",
+      "name_en": "Drake",
+      "description_ko": "드레이크 — Seven Deadly Sins: Origin의 공격형 번개 (양손검) 캐릭터. 스탯, 스킬, 마스터리, 코스튬, 빌드 및 시너지.",
+      "description_en": "Drake — Attacker Thunder (Two-hand Sword) character in Seven Deadly Sins: Origin. Stats, skills, mastery, costumes, builds and synergies.",
+      "portrait_url": "https://7dsorigin.app/images/characters/drake.webp",
+      "banner_url": "https://7dsorigin.app/images/characters/banners/drake.webp",
+      "source_url": "https://7dsorigin.app/en/characters/drake",
+      "variants": [
+        {
+          "weapon": "양손검",
+          "weapon_en": "Two-hand Sword",
+          "role": "공격",
+          "role_en": "Attacker",
+          "element": "Thunder",
+          "element_en": "Thunder"
+        },
+        {
+          "weapon": "스태프",
+          "weapon_en": "Staff",
+          "role": "지원",
+          "role_en": "Supporter",
+          "element": "Thunder",
+          "element_en": "Thunder"
+        },
+        {
+          "weapon": "One-hand Sword",
+          "weapon_en": "One-hand Sword",
+          "role": "Burster",
+          "role_en": "Burster",
+          "element": "Thunder",
+          "element_en": "Thunder"
+        }
+      ]
+    },
+    "dreyfus": {
+      "name_ko": "드레퓌스",
+      "name_en": "Dreyfus",
+      "description_ko": "드레퓌스 — Seven Deadly Sins: Origin의 지원형 물리 (레이피어) 캐릭터. 스탯, 스킬, 마스터리, 코스튬, 빌드 및 시너지.",
+      "description_en": "Dreyfus — Support Physical (Rapier) character in Seven Deadly Sins: Origin. Stats, skills, mastery, costumes, builds and synergies.",
+      "portrait_url": "https://7dsorigin.app/images/characters/dreyfus.webp",
+      "banner_url": "https://7dsorigin.app/images/characters/banners/dreyfus.webp",
+      "source_url": "https://7dsorigin.app/en/characters/dreyfus",
+      "variants": [
+        {
+          "weapon": "레이피어",
+          "weapon_en": "Rapier",
+          "role": "지원",
+          "role_en": "Supporter",
+          "element": "물리",
+          "element_en": "Physical"
+        },
+        {
+          "weapon": "One-hand Sword",
+          "weapon_en": "One-hand Sword",
+          "role": "공격",
+          "role_en": "Attacker",
+          "element": "대지",
+          "element_en": "Earth"
+        },
+        {
+          "weapon": "랜스",
+          "weapon_en": "Lance",
+          "role": "공격",
+          "role_en": "Attacker",
+          "element": "Holy",
+          "element_en": "Holy"
+        }
+      ]
+    },
+    "manny": {
+      "name_ko": "매니",
+      "name_en": "Mannie",
+      "description_ko": "매니 — Seven Deadly Sins: Origin의 지원형 신성 (지팡이) 캐릭터. 스탯, 스킬, 마스터리, 코스튬, 빌드 및 시너지.",
+      "description_en": "Mannie — Support Holy (Staff) character in Seven Deadly Sins: Origin. Stats, skills, mastery, costumes, builds and synergies.",
+      "portrait_url": "https://7dsorigin.app/images/characters/manny.webp",
+      "banner_url": "https://7dsorigin.app/images/characters/banners/manny.webp",
+      "source_url": "https://7dsorigin.app/en/characters/manny",
+      "variants": [
+        {
+          "weapon": "스태프",
+          "weapon_en": "Staff",
+          "role": "지원",
+          "role_en": "Supporter",
+          "element": "Holy",
+          "element_en": "Holy"
+        },
+        {
+          "weapon": "쌍검",
+          "weapon_en": "Dual Swords",
+          "role": "지원",
+          "role_en": "Supporter",
+          "element": "Ice",
+          "element_en": "Ice"
+        },
+        {
+          "weapon": "One-hand Sword",
+          "weapon_en": "One-hand Sword",
+          "role": "공격",
+          "role_en": "Attacker",
+          "element": "Ice",
+          "element_en": "Ice"
+        }
+      ]
+    },
+    "merlin": {
+      "name_ko": "멀린",
+      "name_en": "Merlin",
+      "description_ko": "멀린 — Seven Deadly Sins: Origin의 공격형 냉기 (책) 캐릭터. 스탯, 스킬, 마스터리, 코스튬, 빌드 및 시너지.",
+      "description_en": "Merlin — Attacker Ice (Book) character in Seven Deadly Sins: Origin. Stats, skills, mastery, costumes, builds and synergies.",
+      "portrait_url": "https://7dsorigin.app/images/characters/merlin.webp",
+      "banner_url": "https://7dsorigin.app/images/characters/banners/merlin.webp",
+      "source_url": "https://7dsorigin.app/en/characters/merlin",
+      "variants": [
+        {
+          "weapon": "마도서",
+          "weapon_en": "Book",
+          "role": "공격",
+          "role_en": "Attacker",
+          "element": "Ice",
+          "element_en": "Ice"
+        },
+        {
+          "weapon": "완드",
+          "weapon_en": "Wand",
+          "role": "공격",
+          "role_en": "Attacker",
+          "element": "Thunder",
+          "element_en": "Thunder"
+        },
+        {
+          "weapon": "스태프",
+          "weapon_en": "Staff",
+          "role": "Burster",
+          "role_en": "Burster",
+          "element": "불",
+          "element_en": "Fire"
+        }
+      ]
+    },
+    "meliodas": {
+      "name_ko": "멜리오다스",
+      "name_en": "Meliodas",
+      "description_ko": "멜리오다스 — Seven Deadly Sins: Origin의 공격형 암흑 (한손검) 캐릭터. 스탯, 스킬, 마스터리, 코스튬, 빌드 및 시너지.",
+      "description_en": "Meliodas — Attacker Dark (One-hand Sword) character in Seven Deadly Sins: Origin. Stats, skills, mastery, costumes, builds and synergies.",
+      "portrait_url": "https://7dsorigin.app/images/characters/meliodas.webp",
+      "banner_url": "https://7dsorigin.app/images/characters/banners/meliodas.webp",
+      "source_url": "https://7dsorigin.app/en/characters/meliodas",
+      "variants": [
+        {
+          "weapon": "One-hand Sword",
+          "weapon_en": "One-hand Sword",
+          "role": "공격",
+          "role_en": "Attacker",
+          "element": "어둠",
+          "element_en": "Dark"
+        },
+        {
+          "weapon": "도끼",
+          "weapon_en": "Axe",
+          "role": "공격",
+          "role_en": "Attacker",
+          "element": "어둠",
+          "element_en": "Dark"
+        },
+        {
+          "weapon": "쌍검",
+          "weapon_en": "Dual Swords",
+          "role": "공격",
+          "role_en": "Attacker",
+          "element": "어둠",
+          "element_en": "Dark"
+        }
+      ]
+    },
+    "bug": {
+      "name_ko": "버그",
+      "name_en": "Bug",
+      "description_ko": "버그 — Seven Deadly Sins: Origin의 공격형 암흑 (도끼) 캐릭터. 스탯, 스킬, 마스터리, 코스튬, 빌드 및 시너지.",
+      "description_en": "Bug — Attacker Dark (Axe) character in Seven Deadly Sins: Origin. Stats, skills, mastery, costumes, builds and synergies.",
+      "portrait_url": "https://7dsorigin.app/images/characters/bug.webp",
+      "banner_url": "https://7dsorigin.app/images/characters/banners/bug.webp",
+      "source_url": "https://7dsorigin.app/en/characters/bug",
+      "variants": [
+        {
+          "weapon": "도끼",
+          "weapon_en": "Axe",
+          "role": "공격",
+          "role_en": "Attacker",
+          "element": "어둠",
+          "element_en": "Dark"
+        },
+        {
+          "weapon": "쌍검",
+          "weapon_en": "Dual Swords",
+          "role": "공격",
+          "role_en": "Attacker",
+          "element": "어둠",
+          "element_en": "Dark"
+        },
+        {
+          "weapon": "마도서",
+          "weapon_en": "Book",
+          "role": "지원",
+          "role_en": "Supporter",
+          "element": "어둠",
+          "element_en": "Dark"
+        }
+      ]
+    },
+    "slader": {
+      "name_ko": "슬레이더",
+      "name_en": "Slater",
+      "description_ko": "슬레이더 — Seven Deadly Sins: Origin의 공격형 화염 (양손검) 캐릭터. 스탯, 스킬, 마스터리, 코스튬, 빌드 및 시너지.",
+      "description_en": "Slater — Attacker Fire (Two-hand Sword) character in Seven Deadly Sins: Origin. Stats, skills, mastery, costumes, builds and synergies.",
+      "portrait_url": "https://7dsorigin.app/images/characters/slader.webp",
+      "banner_url": "https://7dsorigin.app/images/characters/banners/slader.webp",
+      "source_url": "https://7dsorigin.app/en/characters/slader",
+      "variants": [
+        {
+          "weapon": "양손검",
+          "weapon_en": "Two-hand Sword",
+          "role": "공격",
+          "role_en": "Attacker",
+          "element": "불",
+          "element_en": "Fire"
+        },
+        {
+          "weapon": "도끼",
+          "weapon_en": "Axe",
+          "role": "지원",
+          "role_en": "Supporter",
+          "element": "물리",
+          "element_en": "Physical"
+        },
+        {
+          "weapon": "Nunchaku",
+          "weapon_en": "Nunchaku",
+          "role": "Burster",
+          "role_en": "Burster",
+          "element": "물리",
+          "element_en": "Physical"
+        }
+      ]
+    },
+    "escanor": {
+      "name_ko": "에스카노르",
+      "name_en": "Escanor",
+      "description_ko": "에스카노르 — Seven Deadly Sins: Origin의 공격형 화염 (도끼) 캐릭터. 스탯, 스킬, 마스터리, 코스튬, 빌드 및 시너지.",
+      "description_en": "Escanor — Attacker Fire (Axe) character in Seven Deadly Sins: Origin. Stats, skills, mastery, costumes, builds and synergies.",
+      "portrait_url": "https://7dsorigin.app/images/characters/escanor.webp",
+      "banner_url": "https://7dsorigin.app/images/characters/banners/escanor.webp",
+      "source_url": "https://7dsorigin.app/en/characters/escanor",
+      "variants": [
+        {
+          "weapon": "도끼",
+          "weapon_en": "Axe",
+          "role": "공격",
+          "role_en": "Attacker",
+          "element": "불",
+          "element_en": "Fire"
+        },
+        {
+          "weapon": "양손검",
+          "weapon_en": "Two-hand Sword",
+          "role": "공격",
+          "role_en": "Attacker",
+          "element": "Holy",
+          "element_en": "Holy"
+        },
+        {
+          "weapon": "방패",
+          "weapon_en": "Shield",
+          "role": "Warden",
+          "role_en": "Warden",
+          "element": "불",
+          "element_en": "Fire"
+        }
+      ]
+    },
+    "elaine": {
+      "name_ko": "엘레인",
+      "name_en": "Elaine",
+      "description_ko": "엘레인 — Seven Deadly Sins: Origin의 공격형 바람 (완드) 캐릭터. 스탯, 스킬, 마스터리, 코스튬, 빌드 및 시너지.",
+      "description_en": "Elaine — Attacker Wind (Wand) character in Seven Deadly Sins: Origin. Stats, skills, mastery, costumes, builds and synergies.",
+      "portrait_url": "https://7dsorigin.app/images/characters/elaine.webp",
+      "banner_url": "https://7dsorigin.app/images/characters/banners/elaine.webp",
+      "source_url": "https://7dsorigin.app/en/characters/elaine",
+      "variants": [
+        {
+          "weapon": "완드",
+          "weapon_en": "Wand",
+          "role": "공격",
+          "role_en": "Attacker",
+          "element": "바람",
+          "element_en": "Wind"
+        },
+        {
+          "weapon": "스태프",
+          "weapon_en": "Staff",
+          "role": "Burster",
+          "role_en": "Burster",
+          "element": "Holy",
+          "element_en": "Holy"
+        },
+        {
+          "weapon": "마도서",
+          "weapon_en": "Book",
+          "role": "Warden",
+          "role_en": "Warden",
+          "element": "대지",
+          "element_en": "Earth"
+        }
+      ]
+    },
+    "elizabeth": {
+      "name_ko": "엘리자베스",
+      "name_en": "Elizabeth",
+      "description_ko": "엘리자베스 — Seven Deadly Sins: Origin의 방어형 신성 (책) 캐릭터. 스탯, 스킬, 마스터리, 코스튬, 빌드 및 시너지.",
+      "description_en": "Elizabeth — Defender Holy (Book) character in Seven Deadly Sins: Origin. Stats, skills, mastery, costumes, builds and synergies.",
+      "portrait_url": "https://7dsorigin.app/images/characters/elizabeth.webp",
+      "banner_url": "https://7dsorigin.app/images/characters/banners/elizabeth.webp",
+      "source_url": "https://7dsorigin.app/en/characters/elizabeth",
+      "variants": [
+        {
+          "weapon": "마도서",
+          "weapon_en": "Book",
+          "role": "Warden",
+          "role_en": "Warden",
+          "element": "Holy",
+          "element_en": "Holy"
+        },
+        {
+          "weapon": "스태프",
+          "weapon_en": "Staff",
+          "role": "지원",
+          "role_en": "Supporter",
+          "element": "바람",
+          "element_en": "Wind"
+        },
+        {
+          "weapon": "완드",
+          "weapon_en": "Wand",
+          "role": "Burster",
+          "role_en": "Burster",
+          "element": "대지",
+          "element_en": "Earth"
+        }
+      ]
+    },
+    "jericho": {
+      "name_ko": "제리코",
+      "name_en": "Jericho",
+      "description_ko": "제리코 — Seven Deadly Sins: Origin의 공격형 냉기 (쌍검) 캐릭터. 스탯, 스킬, 마스터리, 코스튬, 빌드 및 시너지.",
+      "description_en": "Jericho — Attacker Ice (Dual Swords) character in Seven Deadly Sins: Origin. Stats, skills, mastery, costumes, builds and synergies.",
+      "portrait_url": "https://7dsorigin.app/images/characters/jericho.webp",
+      "banner_url": "https://7dsorigin.app/images/characters/banners/jericho.webp",
+      "source_url": "https://7dsorigin.app/en/characters/jericho",
+      "variants": [
+        {
+          "weapon": "쌍검",
+          "weapon_en": "Dual Swords",
+          "role": "Burster",
+          "role_en": "Burster",
+          "element": "Ice",
+          "element_en": "Ice"
+        },
+        {
+          "weapon": "랜스",
+          "weapon_en": "Lance",
+          "role": "Warden",
+          "role_en": "Warden",
+          "element": "Ice",
+          "element_en": "Ice"
+        },
+        {
+          "weapon": "레이피어",
+          "weapon_en": "Rapier",
+          "role": "공격",
+          "role_en": "Attacker",
+          "element": "Ice",
+          "element_en": "Ice"
+        }
+      ]
+    },
+    "klotho": {
+      "name_ko": "클로토",
+      "name_en": "Clotho",
+      "description_ko": "클로토 — Seven Deadly Sins: Origin의 공격형 바람 (레이피어) 캐릭터. 스탯, 스킬, 마스터리, 코스튬, 빌드 및 시너지.",
+      "description_en": "Clotho — Attacker Wind (Rapier) character in Seven Deadly Sins: Origin. Stats, skills, mastery, costumes, builds and synergies.",
+      "portrait_url": "https://7dsorigin.app/images/characters/klotho.webp",
+      "banner_url": "https://7dsorigin.app/images/characters/banners/klotho.webp",
+      "source_url": "https://7dsorigin.app/en/characters/klotho",
+      "variants": [
+        {
+          "weapon": "레이피어",
+          "weapon_en": "Rapier",
+          "role": "Burster",
+          "role_en": "Burster",
+          "element": "바람",
+          "element_en": "Wind"
+        },
+        {
+          "weapon": "마도서",
+          "weapon_en": "Book",
+          "role": "Warden",
+          "role_en": "Warden",
+          "element": "Ice",
+          "element_en": "Ice"
+        },
+        {
+          "weapon": "스태프",
+          "weapon_en": "Staff",
+          "role": "공격",
+          "role_en": "Attacker",
+          "element": "바람",
+          "element_en": "Wind"
+        }
+      ]
+    },
+    "king": {
+      "name_ko": "킹",
+      "name_en": "King",
+      "description_ko": "킹 — Seven Deadly Sins: Origin의 공격형 신성 (지팡이) 캐릭터. 스탯, 스킬, 마스터리, 코스튬, 빌드 및 시너지.",
+      "description_en": "King — Attacker Holy (Staff) character in Seven Deadly Sins: Origin. Stats, skills, mastery, costumes, builds and synergies.",
+      "portrait_url": "https://7dsorigin.app/images/characters/king.webp",
+      "banner_url": "https://7dsorigin.app/images/characters/banners/king.webp",
+      "source_url": "https://7dsorigin.app/en/characters/king",
+      "variants": [
+        {
+          "weapon": "스태프",
+          "weapon_en": "Staff",
+          "role": "공격",
+          "role_en": "Attacker",
+          "element": "Holy",
+          "element_en": "Holy"
+        },
+        {
+          "weapon": "마도서",
+          "weapon_en": "Book",
+          "role": "Warden",
+          "role_en": "Warden",
+          "element": "물리",
+          "element_en": "Physical"
+        },
+        {
+          "weapon": "완드",
+          "weapon_en": "Wand",
+          "role": "지원",
+          "role_en": "Supporter",
+          "element": "대지",
+          "element_en": "Earth"
+        }
+      ]
+    },
+    "tristan": {
+      "name_ko": "트리스탄",
+      "name_en": "Tristan",
+      "description_ko": "트리스탄 — Seven Deadly Sins: Origin의 공격형 화염 (쌍검) 캐릭터. 스탯, 스킬, 마스터리, 코스튬, 빌드 및 시너지.",
+      "description_en": "Tristan — Attacker Fire (Dual Swords) character in Seven Deadly Sins: Origin. Stats, skills, mastery, costumes, builds and synergies.",
+      "portrait_url": "https://7dsorigin.app/images/characters/tristan.webp",
+      "banner_url": "https://7dsorigin.app/images/characters/banners/tristan.webp",
+      "source_url": "https://7dsorigin.app/en/characters/tristan",
+      "variants": [
+        {
+          "weapon": "쌍검",
+          "weapon_en": "Dual Swords",
+          "role": "Burster",
+          "role_en": "Burster",
+          "element": "불",
+          "element_en": "Fire"
+        },
+        {
+          "weapon": "양손검",
+          "weapon_en": "Two-hand Sword",
+          "role": "공격",
+          "role_en": "Attacker",
+          "element": "불",
+          "element_en": "Fire"
+        },
+        {
+          "weapon": "One-hand Sword",
+          "weapon_en": "One-hand Sword",
+          "role": "Burster",
+          "role_en": "Burster",
+          "element": "바람",
+          "element_en": "Wind"
+        }
+      ]
+    },
+    "tioreh": {
+      "name_ko": "티오레",
+      "name_en": "Tioreh",
+      "description_ko": "티오레 — Seven Deadly Sins: Origin의 지원형 화염 (책) 캐릭터. 스탯, 스킬, 마스터리, 코스튬, 빌드 및 시너지.",
+      "description_en": "Tioreh — Support Fire (Book) character in Seven Deadly Sins: Origin. Stats, skills, mastery, costumes, builds and synergies.",
+      "portrait_url": "https://7dsorigin.app/images/characters/tioreh.webp",
+      "banner_url": "https://7dsorigin.app/images/characters/banners/tioreh.webp",
+      "source_url": "https://7dsorigin.app/en/characters/tioreh",
+      "variants": [
+        {
+          "weapon": "마도서",
+          "weapon_en": "Book",
+          "role": "지원",
+          "role_en": "Supporter",
+          "element": "불",
+          "element_en": "Fire"
+        },
+        {
+          "weapon": "완드",
+          "weapon_en": "Wand",
+          "role": "Warden",
+          "role_en": "Warden",
+          "element": "불",
+          "element_en": "Fire"
+        },
+        {
+          "weapon": "스태프",
+          "weapon_en": "Staff",
+          "role": "지원",
+          "role_en": "Supporter",
+          "element": "대지",
+          "element_en": "Earth"
+        }
+      ]
+    },
+    "howzer": {
+      "name_ko": "하우저",
+      "name_en": "Howzer",
+      "description_ko": "하우저 — Seven Deadly Sins: Origin의 공격형 바람 (랜스) 캐릭터. 스탯, 스킬, 마스터리, 코스튬, 빌드 및 시너지.",
+      "description_en": "Howzer — Attacker Wind (Lance) character in Seven Deadly Sins: Origin. Stats, skills, mastery, costumes, builds and synergies.",
+      "portrait_url": "https://7dsorigin.app/images/characters/howzer.webp",
+      "banner_url": "https://7dsorigin.app/images/characters/banners/howzer.webp",
+      "source_url": "https://7dsorigin.app/en/characters/howzer",
+      "variants": [
+        {
+          "weapon": "랜스",
+          "weapon_en": "Lance",
+          "role": "공격",
+          "role_en": "Attacker",
+          "element": "바람",
+          "element_en": "Wind"
+        },
+        {
+          "weapon": "건틀릿",
+          "weapon_en": "Gauntlets",
+          "role": "지원",
+          "role_en": "Supporter",
+          "element": "바람",
+          "element_en": "Wind"
+        },
+        {
+          "weapon": "Nunchaku",
+          "weapon_en": "Nunchaku",
+          "role": "Warden",
+          "role_en": "Warden",
+          "element": "바람",
+          "element_en": "Wind"
+        }
+      ]
+    },
+    "hendrickson": {
+      "name_ko": "헨드릭슨",
+      "name_en": "Hendrickson",
+      "description_ko": "헨드릭슨 — Seven Deadly Sins: Origin의 방어형 신성 (한손검) 캐릭터. 스탯, 스킬, 마스터리, 코스튬, 빌드 및 시너지.",
+      "description_en": "Hendrickson — Defender Holy (One-hand Sword) character in Seven Deadly Sins: Origin. Stats, skills, mastery, costumes, builds and synergies.",
+      "portrait_url": "https://7dsorigin.app/images/characters/hendrickson.webp",
+      "banner_url": "https://7dsorigin.app/images/characters/banners/hendrickson.webp",
+      "source_url": "https://7dsorigin.app/en/characters/hendrickson",
+      "variants": [
+        {
+          "weapon": "One-hand Sword",
+          "weapon_en": "One-hand Sword",
+          "role": "Warden",
+          "role_en": "Warden",
+          "element": "Holy",
+          "element_en": "Holy"
+        },
+        {
+          "weapon": "쌍검",
+          "weapon_en": "Dual Swords",
+          "role": "공격",
+          "role_en": "Attacker",
+          "element": "물리",
+          "element_en": "Physical"
+        },
+        {
+          "weapon": "랜스",
+          "weapon_en": "Lance",
+          "role": "공격",
+          "role_en": "Attacker",
+          "element": "어둠",
+          "element_en": "Dark"
+        }
+      ]
+    }
+  }
+}
