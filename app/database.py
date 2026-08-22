@@ -1,7 +1,7 @@
-import sqlite3
+import sqlite3, json
 from contextlib import contextmanager
 from datetime import date
-from app.config import DATABASE_PATH, DATA_VERSION
+from app.config import DATABASE_PATH, DATA_VERSION, BASE_DIR, USER_DIR
 
 CHARACTERS = [
  ("derieri","데리엘리","Derieri","SSR","어둠","공격","건틀릿","공격 / 지원", "Ver 1.8 신규 영웅. 무기별 역할을 확인해 파티에 맞춰 운용하세요."),
@@ -59,14 +59,31 @@ def initialize():
         CREATE TABLE IF NOT EXISTS characters(id TEXT PRIMARY KEY, name_ko TEXT, name_en TEXT, rarity TEXT, element TEXT, role TEXT, weapon_type TEXT, roles TEXT, guide TEXT, source_url TEXT, confidence TEXT);
         CREATE TABLE IF NOT EXISTS weapons(id TEXT PRIMARY KEY, name_ko TEXT, weapon_type TEXT, rarity TEXT, recommended_character TEXT, stats TEXT, confidence TEXT);
         CREATE TABLE IF NOT EXISTS items(id TEXT PRIMARY KEY, name_ko TEXT, item_type TEXT, obtain TEXT, description TEXT);
+        CREATE TABLE IF NOT EXISTS catalog(id TEXT PRIMARY KEY, category TEXT NOT NULL, slug TEXT NOT NULL, name_ko TEXT NOT NULL, name_en TEXT, description_ko TEXT, description_en TEXT, source_url TEXT, image_url TEXT, confidence TEXT);
+        CREATE TABLE IF NOT EXISTS map_markers(id TEXT PRIMARY KEY, game_id TEXT, marker_type TEXT, name_ko TEXT, name_en TEXT, description_ko TEXT, latitude REAL, longitude REAL, region TEXT, icon_url TEXT, raw_json TEXT);
+        CREATE INDEX IF NOT EXISTS idx_catalog_category ON catalog(category);
+        CREATE INDEX IF NOT EXISTS idx_catalog_name_ko ON catalog(name_ko);
         CREATE TABLE IF NOT EXISTS accounts(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT UNIQUE NOT NULL, uid TEXT, region TEXT DEFAULT 'Global', star_book INTEGER DEFAULT 1, world_level INTEGER DEFAULT 1, story_progress TEXT DEFAULT '', created_at TEXT NOT NULL);
         CREATE TABLE IF NOT EXISTS owned_characters(account_id INTEGER, character_id TEXT, level INTEGER DEFAULT 1, weapon_name TEXT DEFAULT '', favorite INTEGER DEFAULT 0, PRIMARY KEY(account_id,character_id), FOREIGN KEY(account_id) REFERENCES accounts(id) ON DELETE CASCADE, FOREIGN KEY(character_id) REFERENCES characters(id));
         CREATE TABLE IF NOT EXISTS notes(id INTEGER PRIMARY KEY AUTOINCREMENT, account_id INTEGER, character_id TEXT, note TEXT NOT NULL, done INTEGER DEFAULT 0, FOREIGN KEY(account_id) REFERENCES accounts(id) ON DELETE CASCADE);
         ''')
+        owned_cols={r[1] for r in c.execute('PRAGMA table_info(owned_characters)')}
+        for name,definition in [('breakthrough','INTEGER DEFAULT 0'),('mastery','INTEGER DEFAULT 0'),('combat_power','INTEGER DEFAULT 0'),('equipment_note',"TEXT DEFAULT ''")]:
+            if name not in owned_cols:c.execute(f'ALTER TABLE owned_characters ADD COLUMN {name} {definition}')
         if not c.execute('SELECT 1 FROM characters LIMIT 1').fetchone():
             c.executemany('INSERT INTO characters VALUES(?,?,?,?,?,?,?,?,?,?,?)', [x+("https://7dsorigin.app/en/characters", "community_verified") for x in CHARACTERS])
             c.executemany('INSERT INTO weapons VALUES(?,?,?,?,?,?,?)', WEAPONS)
             c.executemany('INSERT INTO items VALUES(?,?,?,?,?)', ITEMS)
+        catalog_path=USER_DIR/'catalog.json' if (USER_DIR/'catalog.json').exists() else BASE_DIR/'data'/'catalog.json'
+        if catalog_path.exists():
+            payload=json.loads(catalog_path.read_text(encoding='utf-8'))
+            rows=[(r['id'],r['category'],r['slug'],r['name_ko'],r['name_en'],r.get('description_ko',''),r.get('description_en',''),r['source_url'],r.get('image_url',''),r.get('confidence','authorized_public_page')) for r in payload.get('records',[])]
+            c.executemany('INSERT INTO catalog VALUES(?,?,?,?,?,?,?,?,?,?) ON CONFLICT(id) DO UPDATE SET name_ko=excluded.name_ko,name_en=excluded.name_en,description_ko=excluded.description_ko,description_en=excluded.description_en,source_url=excluded.source_url,image_url=excluded.image_url,confidence=excluded.confidence',rows)
+        map_path=BASE_DIR/'data'/'map_markers.json'
+        if map_path.exists() and not c.execute('SELECT 1 FROM map_markers LIMIT 1').fetchone():
+            markers=json.loads(map_path.read_text(encoding='utf-8')).get('markers',[])
+            rows=[(m['id'],m.get('gameId'),m.get('markerType',''),m.get('nameKo') or m.get('nameEn') or m.get('markerType',''),m.get('nameEn',''),m.get('descriptionKo',''),m.get('lat'),m.get('lng'),m.get('region',''),m.get('iconUrl',''),json.dumps(m,ensure_ascii=False)) for m in markers]
+            c.executemany('INSERT OR REPLACE INTO map_markers VALUES(?,?,?,?,?,?,?,?,?,?,?)',rows)
         c.execute("INSERT OR REPLACE INTO metadata VALUES('game_version',?)", (DATA_VERSION,))
         c.execute("INSERT OR REPLACE INTO metadata VALUES('last_verified',?)", (date.today().isoformat(),))
         c.commit()
@@ -81,23 +98,37 @@ def search(query, kind="all"):
             out += [("무기", r['name_ko'], r['id'], f"{r['rarity']} · {r['weapon_type']} · {r['recommended_character']}") for r in c.execute('SELECT * FROM weapons WHERE name_ko LIKE ?',(q,))]
         if kind in ('all','items'):
             out += [("아이템", r['name_ko'], r['id'], f"{r['item_type']} · {r['obtain']}") for r in c.execute('SELECT * FROM items WHERE name_ko LIKE ?',(q,))]
+        if kind in ('all','catalog'):
+            labels={'weapons':'무기','armor':'방어구','accessories':'장신구','items':'아이템','pets':'펫','monsters':'몬스터','elite-monsters':'정예 몬스터','field-bosses':'필드 보스','effects':'효과','characters':'캐릭터'}
+            out += [(labels.get(r['category'],r['category']),r['name_ko'],r['id'],(r['description_ko'] or r['description_en'])[:150]) for r in c.execute('SELECT * FROM catalog WHERE name_ko LIKE ? OR name_en LIKE ? ORDER BY category,name_ko LIMIT 250',(q,q))]
         return out
 
 def characters():
     with connect() as c: return c.execute('SELECT * FROM characters ORDER BY CASE rarity WHEN "SSR" THEN 0 ELSE 1 END, name_ko').fetchall()
 def character(cid):
     with connect() as c: return c.execute('SELECT * FROM characters WHERE id=?',(cid,)).fetchone()
+def catalog_entry(entity_id):
+    with connect() as c:return c.execute('SELECT * FROM catalog WHERE id=?',(entity_id,)).fetchone()
+def map_search(query='',marker_type='all',limit=500):
+    q=f"%{query.strip()}%"
+    with connect() as c:
+        if marker_type=='all':return c.execute('SELECT * FROM map_markers WHERE name_ko LIKE ? OR name_en LIKE ? ORDER BY marker_type,name_ko LIMIT ?',(q,q,limit)).fetchall()
+        return c.execute('SELECT * FROM map_markers WHERE marker_type=? AND (name_ko LIKE ? OR name_en LIKE ?) ORDER BY name_ko LIMIT ?',(marker_type,q,q,limit)).fetchall()
+def map_types():
+    with connect() as c:return [r[0] for r in c.execute('SELECT DISTINCT marker_type FROM map_markers ORDER BY marker_type')]
 def account_list():
     with connect() as c: return c.execute('SELECT * FROM accounts ORDER BY id DESC').fetchall()
+def account(aid):
+    with connect() as c:return c.execute('SELECT * FROM accounts WHERE id=?',(aid,)).fetchone()
 def create_account(name,uid,region,star,world,story):
     with connect() as c:
         c.execute('INSERT INTO accounts(name,uid,region,star_book,world_level,story_progress,created_at) VALUES(?,?,?,?,?,?,?)',(name,uid,region,star,world,story,date.today().isoformat())); c.commit()
 def delete_account(aid):
     with connect() as c: c.execute('DELETE FROM accounts WHERE id=?',(aid,)); c.commit()
 def owned(aid):
-    with connect() as c: return c.execute('SELECT c.*,o.level,o.weapon_name FROM owned_characters o JOIN characters c ON c.id=o.character_id WHERE o.account_id=?',(aid,)).fetchall()
-def set_owned(aid,cid,level=1,weapon=''):
-    with connect() as c: c.execute('INSERT INTO owned_characters(account_id,character_id,level,weapon_name) VALUES(?,?,?,?) ON CONFLICT(account_id,character_id) DO UPDATE SET level=excluded.level,weapon_name=excluded.weapon_name',(aid,cid,level,weapon)); c.commit()
+    with connect() as c: return c.execute('SELECT c.*,o.level,o.weapon_name,o.breakthrough,o.mastery,o.combat_power,o.equipment_note FROM owned_characters o JOIN characters c ON c.id=o.character_id WHERE o.account_id=?',(aid,)).fetchall()
+def set_owned(aid,cid,level=1,weapon='',breakthrough=0,mastery=0,combat_power=0,equipment_note=''):
+    with connect() as c: c.execute('INSERT INTO owned_characters(account_id,character_id,level,weapon_name,breakthrough,mastery,combat_power,equipment_note) VALUES(?,?,?,?,?,?,?,?) ON CONFLICT(account_id,character_id) DO UPDATE SET level=excluded.level,weapon_name=excluded.weapon_name,breakthrough=excluded.breakthrough,mastery=excluded.mastery,combat_power=excluded.combat_power,equipment_note=excluded.equipment_note',(aid,cid,level,weapon,breakthrough,mastery,combat_power,equipment_note)); c.commit()
 def remove_owned(aid,cid):
     with connect() as c: c.execute('DELETE FROM owned_characters WHERE account_id=? AND character_id=?',(aid,cid));c.commit()
 
