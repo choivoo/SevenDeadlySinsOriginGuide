@@ -17,3 +17,10 @@ def test_database_validation(monkeypatch):
     p=Path(tempfile.mkdtemp())/'game.db';monkeypatch.setattr(db,'DATABASE_PATH',p);db.initialize()
     assert validate_database(p)==[]
 
+def test_detailed_account_analysis(monkeypatch):
+    p=Path(tempfile.mkdtemp())/'game.db';monkeypatch.setattr(db,'DATABASE_PATH',p);db.initialize();db.create_account('Detailed','','Korea',35,7,'12-3')
+    aid=db.account_list()[0]['id'];db.set_owned(aid,'derieri',70,'영혼의 탐식 건틀릿',3,45,52000,'공격 세트')
+    result=analyze(aid)
+    assert result['team'][0]['name_ko']=='데리엘리'
+    assert '추천' not in result['setting'] or result['setting']
+
