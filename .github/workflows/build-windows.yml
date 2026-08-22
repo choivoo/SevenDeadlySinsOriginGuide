@@ -1,0 +1,35 @@
+name: Build and test Windows release
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  release:
+    types: [published]
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -r requirements.txt
+      - run: python -m pytest -q
+      - run: python scripts/build_exe.py
+      - name: Portable archive
+        shell: pwsh
+        run: Compress-Archive -Path Release\* -DestinationPath SevenDeadlySinsOriginGuide_Portable.zip -Force
+      - name: Smoke test executable
+        shell: pwsh
+        run: |
+          $process = Start-Process -FilePath Release\SevenDeadlySinsOriginGuide.exe -PassThru
+          Start-Sleep -Seconds 8
+          if ($process.HasExited) { throw "Application exited during smoke test" }
+          Stop-Process -Id $process.Id -Force
+      - uses: actions/upload-artifact@v4
+        with:
+          name: SevenDeadlySinsOriginGuide-Windows
+          path: SevenDeadlySinsOriginGuide_Portable.zip
+
