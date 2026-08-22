@@ -25,7 +25,7 @@ def backup_database():
 
 def data_status():
     con=sqlite3.connect(DATABASE_PATH)
-    counts={name:con.execute(f"SELECT COUNT(*) FROM {name}").fetchone()[0] for name in ("characters","weapons","items")}
+    counts={name:con.execute(f"SELECT COUNT(*) FROM {name}").fetchone()[0] for name in ("characters","weapons","items","catalog","map_markers")}
     con.close()
     return {"game_version":DATA_VERSION,"counts":counts,"validation":validate_database()}
 
