@@ -9,6 +9,7 @@ for path in (out,staging):
 cmd=[sys.executable,'-m','PyInstaller','--noconfirm','--clean','--windowed','--name','SevenDeadlySinsOriginGuide','--paths',str(root),'--distpath',str(staging),'--workpath',str(root/'build'),'--specpath',str(root),'--collect-all','rapidocr_onnxruntime']
 if (root/'data'/'catalog.json').exists():cmd += ['--add-data',f"{root/'data'/'catalog.json'};data"]
 if (root/'data'/'map_markers.json').exists():cmd += ['--add-data',f"{root/'data'/'map_markers.json'};data"]
+if (root/'data'/'character_details.json').exists():cmd += ['--add-data',f"{root/'data'/'character_details.json'};data"]
 cmd += [str(root/'app'/'main.py')]
 subprocess.run(cmd,check=True,cwd=root)
 out.mkdir(); dist=staging/'SevenDeadlySinsOriginGuide'
@@ -26,4 +27,3 @@ with zipfile.ZipFile(portable,'w',zipfile.ZIP_DEFLATED) as archive:
 digest=hashlib.sha256(portable.read_bytes()).hexdigest()
 (root/'SevenDeadlySinsOriginGuide_Portable.zip.sha256').write_text(f'{digest}  {portable.name}\n',encoding='ascii')
 print(out)
-
