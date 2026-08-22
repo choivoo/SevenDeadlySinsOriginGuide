@@ -6,7 +6,11 @@ root=Path(__file__).resolve().parents[1]
 out=root/'Release'; staging=root/'release_staging'
 for path in (out,staging):
     if path.exists(): shutil.rmtree(path)
-subprocess.run([sys.executable,'-m','PyInstaller','--noconfirm','--clean','--windowed','--name','SevenDeadlySinsOriginGuide','--paths',str(root),'--distpath',str(staging),'--workpath',str(root/'build'),'--specpath',str(root),str(root/'app'/'main.py')],check=True,cwd=root)
+cmd=[sys.executable,'-m','PyInstaller','--noconfirm','--clean','--windowed','--name','SevenDeadlySinsOriginGuide','--paths',str(root),'--distpath',str(staging),'--workpath',str(root/'build'),'--specpath',str(root),'--collect-all','rapidocr_onnxruntime']
+if (root/'data'/'catalog.json').exists():cmd += ['--add-data',f"{root/'data'/'catalog.json'};data"]
+if (root/'data'/'map_markers.json').exists():cmd += ['--add-data',f"{root/'data'/'map_markers.json'};data"]
+cmd += [str(root/'app'/'main.py')]
+subprocess.run(cmd,check=True,cwd=root)
 out.mkdir(); dist=staging/'SevenDeadlySinsOriginGuide'
 for child in dist.iterdir(): shutil.move(str(child),out/child.name)
 shutil.rmtree(staging)
